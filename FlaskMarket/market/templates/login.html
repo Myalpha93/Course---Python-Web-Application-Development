@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% block title %}
+Login Page
+{% endblock %}
+{% block content %}
+<div class="container">
+    <form method="POST" class="form-signin" style="color:white;">
+        {{ form.hidden_tag() }}
+        <div class="text-center">
+            <img class="mb-4 item-align-center" src="https://res.cloudinary.com/jimshapedcoding/image/upload/v1597332609/android-icon-192x192_ove2a7.png" alt="">
+            <h1 class="h3 mb-3 font-weight-normal text-center">
+                Login
+            </h1>
+        </div>
+        
+        <br>
+            {{ form.username.label() }}
+            {{ form.username(class="form-control",placeholder="Ingrese nombre de usuario") }}
+
+            {{ form.password.label() }}
+            {{ form.password(class="form-control",placeholder="Ingrese su contreseña") }}
+            <div class="checkbox mb-3">
+                <h5>¿No tienes cuenta?</h5>
+                <a href="{{ url_for('register_page') }}" class="btn btn-sm btn-outline-secondary">Regitrarse</a>
+            </div>
+            <br>
+            {{ form.submit(class="btn btn-lg btn-block btn-outline-primary") }}
+
+            
+    </form>
+</div>
+{% endblock %}
+    
+31eb25f7da3ddfa5a46a8724

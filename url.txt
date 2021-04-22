@@ -1,0 +1,7 @@
+**tutorial completo**
+https://www.youtube.com/watch?v=Qr4QMBUPxWo
+
+dia 1: 4:33:48
+
+**proyecto completo**
+https://github.com/jimdevops19/FlaskSeries/blob/master/08%20-%20Flask%20Forms/market/templates/register.html

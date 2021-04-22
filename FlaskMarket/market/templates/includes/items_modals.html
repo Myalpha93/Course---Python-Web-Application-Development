@@ -1,0 +1,72 @@
+<style>
+    .modal-content {
+      background-color: #212121
+    }
+  </style>
+  
+  <!-- More Info -->
+  <div class="modal fade" id="Modal-MoreInfo-{{ items.id }}"
+       tabindex="-1"
+       aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="ModalLabel">
+            <!-- -->
+            {{ items.name }}
+          </h5>
+          <button type="button" class="close"
+                  data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          {{ items.description }}
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary"
+                  data-dismiss="modal">Close
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Purchase Confirm -->
+  <div class="modal fade" id="Modal-PurchaseConfirm-{{ items.id }}"
+       tabindex="-1"
+       aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="ModalLabel">
+            <!-- -->
+            {{ items.name }}
+          </h5>
+          <button type="button" class="close"
+                  data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+         
+         <form method="POST">
+           {{compra_form.hidden_tag()}}
+           <h4 class="text-center">
+            ¿Estas seguro de comprar {{ items.name }} por {{ items.price }}$ ?
+           </h4>
+           <h6 class="text-center">
+             Selecciona comprar y se compara el producto.
+           </h6>
+           <input type="hidden" name="nombre_producto" value="{{ items.name }}" id="nombre_producto">
+           {{compra_form.submit(class="btn btn-outline-success btn-block")}}
+         </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline-secondary btn-block"
+                  data-dismiss="modal">Close
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>

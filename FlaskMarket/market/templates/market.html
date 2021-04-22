@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+{% block title %}
+Market Place
+{% endblock %}
+{% block content %}
+    <div class="row mt-3">
+        <div class="col-8">
+            <h2>Productos disponibles</h2>
+            <p>Selecciona el item para comprarlo</p>
+            <table class="table table-hover table-dark">
+                <thead>
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Bardcode</th>
+                        <th scope="col">Price</th>
+                        <th scope="col">Options</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for items in item_name %}
+                    {% include 'includes/items_modals.html' %}
+                    <tr>
+                        <td>{{ items.id }}</td>
+                        <td>{{ items.name }}</td>
+                        <td>{{ items.barcode }}</td>
+                        <td>{{ items.price }}$</td>
+                        <td>
+                            <button class="btn btn-outline-info" data-toggle="modal" data-target="#Modal-MoreInfo-{{ items.id }}"> Ver más</button>
+                            <button class="btn btn-outline-success" data-toggle="modal" data-target="#Modal-PurchaseConfirm-{{ items.id }}">Comprar</button>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <div class="col-4">
+            <h2>Productos comprados</h2>
+            <p>Click en vender para devolver el item a la tienda</p>
+            <div class="row">
+                {% for owened_item in owened_items %}
+                {% include 'includes/owned_items_modal.html' %}
+                <div class="col-md-6">
+                    <div class="card text-center bg-dark mt-3">
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                {{owened_item.name}}
+                            </h5>
+                            <button type="button" class="btn btn-outline-danger mb-3" data-toggle="modal" data-target="#Modal-SellingConfirm-{{ owened_item.id }}">
+                                Vender este producto
+                            </button>
+                            <p class="card-text"><strong>
+                                Precio: {{owened_item.price}}
+                            </strong></p>
+                            <p class="card-text"><strong>
+                                Descripcion: {{owened_item.description}}
+                            </strong></p>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    
+{% endblock %}
+    

@@ -1,0 +1,59 @@
+************* COMANDOS CONSOLA ***************
+set FLASK_APP=market.py // definimos en donde inicia nuestro programa
+set FLASK_DEBUG=1 // ponemos nuestro programa en modo debug desde la consola
+flask run // iniciamos el programa
+
+comando para crear db en python con sqlite3
+
+primero ejecutamos python como comando: python 
+luego dentro de la consola importamos
+from market import db
+db.create_all()
+
+****eliminar base***
+db.drop_all()
+
+***crear registros***
+from market import Item
+item1 = Item(name="Iphone 10", price=500, barcode='213213123', description='desc')
+db.session.add(item1)
+db.session.commit()
+
+***ver registros***
+Item.query.all()
+
+***registros mediante form y mostrando los que queremos***
+from market import Item
+for item in Item.query.all():
+
+***consulta con filtro***
+for item in Item.query.filter_by(price=500):
+
+item1= Item.query.filter_by(name='Iphone 10').first()
+item1
+
+
+**** guardamos el id de un usuario en un item que necesita dicho id****
+item1 = Item.query.filter_by(name='Iphone 10').first()
+item1.owner = User.query.filter_by(username='hugouno').first().id
+
+
+**obtenemos informados de la llave foranea**
+i = Item.query.filter_by(name='Iphone 10').first()
+>>> i.owned_user
+
+
+**salir**
+exit()
+
+**limpiar pantalla del python**
+os.system('cls')
+
+
+
+
+
+pip install flask-wtf //permite crear formularios
+pip install wtforms  //
+pip install flask_bcrypt // para encriptar
+pip install flask_login // administrar login

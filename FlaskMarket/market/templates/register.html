@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block title %}
+Register
+{% endblock %}
+{% block content %}
+<div class="container">
+    <form method="POST" class="form-register" style="color:white;">
+        {{ form.hidden_tag() }}
+        <div class="text-center">
+            <img class="mb-4 item-align-center" src="https://res.cloudinary.com/jimshapedcoding/image/upload/v1597332609/android-icon-192x192_ove2a7.png" alt="">
+            <h1 class="h3 mb-3 font-weight-normal text-center">
+                Crea su cuenta
+            </h1>
+        </div>
+        
+        <br>
+            {{ form.username.label() }}
+            {{ form.username(class="form-control",placeholder="Ingrese nombre de usuario") }}
+    
+            {{ form.email_address.label() }}
+            {{ form.email_address(class="form-control",placeholder="Ingrese nombre de correo electronico") }}
+    
+            {{ form.password1.label() }}
+            {{ form.password1(class="form-control",placeholder="Ingrese su contreseña") }}
+    
+            {{ form.password2.label() }}
+            {{ form.password2(class="form-control",placeholder="Repita su contraseña") }}
+            <div class="checkbox mb-3">
+                <h5>¿Ya tienes cuenta?</h5>
+                <a href="{{ url_for('login_page') }}" class="btn btn-sm btn-outline-secondary">Login</a>
+            </div>
+            <br>
+            {{ form.submit(class="btn btn-lg btn-block btn-outline-primary") }}
+        
+    </form>
+</div>
+{% endblock %}
+    
+31eb25f7da3ddfa5a46a8724

@@ -1,0 +1,110 @@
+pip install django
+para installar django
+
+python -m venv prueba 
+para crear un entorno django
+
+activate                ///////////////////   source bin/activate          (en linux)
+para activar el entorno, en la carpeta donde esta el entorno por lo general en script
+
+pip freeze --local 
+para ver que paquetes tenemos instalados
+
+python manage.py runserver
+sirve para iniciar el server en django
+
+django-admin startproject project01
+sirve para crear una carpeta con el proyecto django con el nombre project01
+
+python manage.py createsuperuser
+para crear un usuario para adminsitracion
+
+python manage.py runserver --settings=empleado.settings.local
+encender el server en un ambiente local
+
+django-admin startapp departamento
+se crea una aplicacion con nombre departamento
+
+django MVP: MODELO VISTA TEMPLATE
+
+python manage.py makemigrations
+verificar si hay algo nuevo en los modelos 
+
+python manage.py migrate
+aqui crea el modelo
+
+https://docs.djangoproject.com/en/3.1/ref/models/fields/
+https://neunapp.com/contenido/tipos-de-campos-de-un-modelo-en-django-fields-in-models-18329
+para ver tipos de datos de modelos
+
+https://ccbv.co.uk/projects/Django/3.0/django.views.generic.list/ListView/
+atributos para listviews
+
+null= True
+puede usarse o no para imagenes o archivos que no son obligatorios
+igual que blan=True
+max_length=20
+default= False
+unique=True
+
+PUERTO QUE ESCUCHA POSTGRESQL 5432
+
+se installa 
+sudo pip install django
+unipath
+pillow
+sudo apt-get install postgresql postgresql-contrib
+pip install psycopg2            //// sirve como conexion de postgres y django
+pip install gunicorn            ///
+ apt install nginx
+
+COMANDOS DE LA SHELL DE PYTHON:
+python manage.py shell            //para abrir la shell
+from applications.libro.models import *   //para importar una clase, en este caso el modelo libro y categoria
+Categoria.objects.listar_categoria_libros() //para ejecutar una funcion del objeto
+
+https://neunapp.com/contenido/crear-base-de-datos-postgres-en-windows-10-desde-sqlshell-19082
+
+**************************COMO ACTIVA TRIGRAM**************************
+#esto nos sirve para busquedas parecido al like pero este es mejor ya que si nos equivocamos en una letra lo busca asi
+nos metemos a la shell de postgresql
+ingresamos a la base de datos que necesitamos
+\c base_dedatos;
+activamos el trigram
+CREATE EXTENSION pg_trgm;
+creamos el index donde utilizaremos el trigam
+le damos un nombre al index, luego la tabla seguida de un guion bajo y el modelo y finalmente el atributo de la tabla
+donde se utilizara el trigam
+CREATE INDEX libro_titulo_idx ON libro_libro USING GIN(titulo gin_trgm_ops);
+
+*********************ACTIVAR TRIGRAM DE POSTGRES EN LA APP*************
+nos vamos a la configuracion base y pones esto en el arreglo INSTALLED_APP
+'django.contrib.postgres',
+y asi es como se importa donde lo vamos a usar
+from django.contrib.postgres.search import TrigramSimilarity
+
+*************BACKUP BASE DE DATOS EN POSTGRES MEDIANTE CONSOLA**************
+pg_dump -U postgres dbbiblioteca > database.sql /////// en la carptea que deseas el backup
+dropdb dbbiblioteca ////// eliminar base de datos
+createdb dbbiblioteca //// crear base de datos
+pg_dump -U postgres dbbiblioteca < database.sql    //////para reestablecer la base de datos
+
+
+
+
+*************PARA ACTIVAR TODOS LOS PAQUETES QUE REQUERIDOS DE PYTHON *********************************
+1 crear una carpeta requirements
+2 crear archivo local y prod y en cada uno copiar los paquetes que usamos
+3 para esto usamos pip freeze --local y pegamos
+4 utilizamos pip install -r requirements/local.txt
+
+
+************************Comando para crear Copia de Seguridad con Django**********************************
+python manage.py dumpdata --exclude auth.permission > nombre_copia_bd.json 
+Comando para Volcar la copia de seguridad en un base de datos existente con Django
+python manage.py loaddata nombre_copia_bd.json
+
+
+
+
+
